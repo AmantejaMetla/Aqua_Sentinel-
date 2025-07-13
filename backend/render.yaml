@@ -11,4 +11,12 @@ services:
       - key: FLASK_DEBUG  
         value: false
       - key: PORT
-        value: 10000 
+        value: 10000
+      - key: CORS_ORIGINS
+        value: "https://your-frontend-url.netlify.app,http://localhost:3000"
+      - key: DATABASE_URL
+        value: "sqlite:///aquasentinel.db"
+      - key: MODEL_PATH
+        value: "./model.pkl"
+      - key: SCALER_PATH
+        value: "./scaler.pkl" 
