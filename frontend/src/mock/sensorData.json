@@ -1,0 +1,294 @@
+{
+  "scenarios": {
+    "normal": {
+      "name": "Normal Operation",
+      "description": "Typical water quality parameters within acceptable ranges",
+      "parameters": {
+        "ph": { "min": 6.8, "max": 7.5, "baseline": 7.2, "drift": 0.1 },
+        "tds": { "min": 180, "max": 250, "baseline": 215, "drift": 15 },
+        "orp": { "min": 380, "max": 520, "baseline": 450, "drift": 30 },
+        "turbidity": { "min": 0.1, "max": 0.8, "baseline": 0.4, "drift": 0.15 },
+        "temperature": { "min": 20, "max": 25, "baseline": 22.5, "drift": 1.5 }
+      },
+      "probability": 0.85
+    },
+    "filter_degradation": {
+      "name": "Filter Degradation",
+      "description": "Gradual decline in filtration efficiency",
+      "parameters": {
+        "ph": { "min": 6.5, "max": 8.0, "baseline": 7.0, "drift": 0.3 },
+        "tds": { "min": 250, "max": 380, "baseline": 315, "drift": 25 },
+        "orp": { "min": 320, "max": 480, "baseline": 400, "drift": 40 },
+        "turbidity": { "min": 0.8, "max": 1.5, "baseline": 1.1, "drift": 0.25 },
+        "temperature": { "min": 22, "max": 26, "baseline": 24, "drift": 2 }
+      },
+      "probability": 0.08
+    },
+    "contamination_event": {
+      "name": "Contamination Event",
+      "description": "Sudden spike in contaminants requiring immediate attention",
+      "parameters": {
+        "ph": { "min": 5.8, "max": 6.4, "baseline": 6.1, "drift": 0.2 },
+        "tds": { "min": 450, "max": 650, "baseline": 550, "drift": 50 },
+        "orp": { "min": 180, "max": 280, "baseline": 230, "drift": 30 },
+        "turbidity": { "min": 1.8, "max": 3.2, "baseline": 2.5, "drift": 0.4 },
+        "temperature": { "min": 20, "max": 24, "baseline": 22, "drift": 1 }
+      },
+      "probability": 0.03
+    },
+    "alkaline_spike": {
+      "name": "Alkaline Spike",
+      "description": "High pH levels due to chemical imbalance",
+      "parameters": {
+        "ph": { "min": 8.8, "max": 9.5, "baseline": 9.1, "drift": 0.2 },
+        "tds": { "min": 200, "max": 300, "baseline": 250, "drift": 20 },
+        "orp": { "min": 600, "max": 800, "baseline": 700, "drift": 50 },
+        "turbidity": { "min": 0.2, "max": 0.6, "baseline": 0.4, "drift": 0.1 },
+        "temperature": { "min": 22, "max": 26, "baseline": 24, "drift": 2 }
+      },
+      "probability": 0.02
+    },
+    "maintenance_required": {
+      "name": "Maintenance Required",
+      "description": "System showing signs of wear requiring maintenance",
+      "parameters": {
+        "ph": { "min": 6.3, "max": 7.8, "baseline": 7.0, "drift": 0.4 },
+        "tds": { "min": 280, "max": 420, "baseline": 350, "drift": 35 },
+        "orp": { "min": 290, "max": 450, "baseline": 370, "drift": 40 },
+        "turbidity": { "min": 0.9, "max": 1.8, "baseline": 1.35, "drift": 0.3 },
+        "temperature": { "min": 21, "max": 27, "baseline": 24, "drift": 3 }
+      },
+      "probability": 0.02
+    }
+  },
+  "anomaly_patterns": {
+    "sudden_spike": {
+      "name": "Sudden Spike",
+      "description": "Rapid increase in parameter value",
+      "multiplier": 2.5,
+      "duration": 300000,
+      "probability": 0.05
+    },
+    "gradual_drift": {
+      "name": "Gradual Drift",
+      "description": "Slow drift away from normal range",
+      "multiplier": 1.8,
+      "duration": 1800000,
+      "probability": 0.03
+    },
+    "oscillation": {
+      "name": "Oscillation",
+      "description": "Unstable readings with high variance",
+      "multiplier": 1.5,
+      "duration": 900000,
+      "probability": 0.02
+    },
+    "sensor_malfunction": {
+      "name": "Sensor Malfunction",
+      "description": "Erratic or impossible readings",
+      "multiplier": 5.0,
+      "duration": 120000,
+      "probability": 0.01
+    }
+  },
+  "thresholds": {
+    "ph": {
+      "optimal": { "min": 6.8, "max": 7.5 },
+      "acceptable": { "min": 6.5, "max": 8.0 },
+      "warning": { "min": 6.2, "max": 8.5 },
+      "critical": { "min": 5.5, "max": 9.0 }
+    },
+    "tds": {
+      "optimal": { "min": 150, "max": 300 },
+      "acceptable": { "min": 100, "max": 400 },
+      "warning": { "min": 75, "max": 500 },
+      "critical": { "min": 50, "max": 600 }
+    },
+    "orp": {
+      "optimal": { "min": 400, "max": 600 },
+      "acceptable": { "min": 300, "max": 700 },
+      "warning": { "min": 250, "max": 750 },
+      "critical": { "min": 200, "max": 800 }
+    },
+    "turbidity": {
+      "optimal": { "min": 0.0, "max": 0.5 },
+      "acceptable": { "min": 0.0, "max": 1.0 },
+      "warning": { "min": 0.0, "max": 1.5 },
+      "critical": { "min": 0.0, "max": 2.0 }
+    },
+    "temperature": {
+      "optimal": { "min": 20, "max": 25 },
+      "acceptable": { "min": 18, "max": 28 },
+      "warning": { "min": 15, "max": 30 },
+      "critical": { "min": 10, "max": 35 }
+    }
+  },
+  "simulation_patterns": {
+    "daily_cycle": {
+      "name": "Daily Usage Cycle",
+      "description": "Simulates daily water usage patterns",
+      "peaks": [
+        { "time": "07:00", "intensity": 1.3, "duration": 120 },
+        { "time": "12:00", "intensity": 1.1, "duration": 90 },
+        { "time": "18:00", "intensity": 1.4, "duration": 150 },
+        { "time": "21:00", "intensity": 1.2, "duration": 60 }
+      ]
+    },
+    "weekly_cycle": {
+      "name": "Weekly Usage Cycle",
+      "description": "Simulates weekly water usage patterns",
+      "patterns": {
+        "monday": 1.0,
+        "tuesday": 0.9,
+        "wednesday": 0.95,
+        "thursday": 0.9,
+        "friday": 1.1,
+        "saturday": 1.3,
+        "sunday": 1.2
+      }
+    },
+    "seasonal_effects": {
+      "name": "Seasonal Effects",
+      "description": "Simulates seasonal variations in water quality",
+      "spring": {
+        "tds_modifier": 0.9,
+        "ph_modifier": 1.05,
+        "turbidity_modifier": 1.2
+      },
+      "summer": {
+        "tds_modifier": 1.1,
+        "ph_modifier": 1.0,
+        "turbidity_modifier": 0.8,
+        "temperature_modifier": 1.15
+      },
+      "autumn": {
+        "tds_modifier": 1.0,
+        "ph_modifier": 0.95,
+        "turbidity_modifier": 1.1
+      },
+      "winter": {
+        "tds_modifier": 0.85,
+        "ph_modifier": 1.0,
+        "turbidity_modifier": 0.9,
+        "temperature_modifier": 0.85
+      }
+    }
+  },
+  "historical_events": [
+    {
+      "id": "evt_001",
+      "timestamp": "2024-01-15T08:30:00Z",
+      "type": "contamination_event",
+      "severity": "high",
+      "parameters_affected": ["ph", "tds", "turbidity"],
+      "duration": 1800000,
+      "description": "Detected organic contamination in water supply"
+    },
+    {
+      "id": "evt_002",
+      "timestamp": "2024-01-20T14:15:00Z",
+      "type": "filter_degradation",
+      "severity": "medium",
+      "parameters_affected": ["tds", "turbidity"],
+      "duration": 21600000,
+      "description": "Primary filter showing reduced efficiency"
+    },
+    {
+      "id": "evt_003",
+      "timestamp": "2024-01-25T10:45:00Z",
+      "type": "alkaline_spike",
+      "severity": "high",
+      "parameters_affected": ["ph", "orp"],
+      "duration": 3600000,
+      "description": "Chemical dosing system malfunction causing pH spike"
+    },
+    {
+      "id": "evt_004",
+      "timestamp": "2024-02-01T16:20:00Z",
+      "type": "sensor_malfunction",
+      "severity": "low",
+      "parameters_affected": ["temperature"],
+      "duration": 900000,
+      "description": "Temperature sensor providing inconsistent readings"
+    },
+    {
+      "id": "evt_005",
+      "timestamp": "2024-02-05T11:30:00Z",
+      "type": "maintenance_required",
+      "severity": "medium",
+      "parameters_affected": ["all"],
+      "duration": 7200000,
+      "description": "System performance degradation requiring maintenance"
+    }
+  ],
+  "quality_indicators": {
+    "excellent": {
+      "score_range": { "min": 90, "max": 100 },
+      "description": "Water quality exceeds all standards",
+      "color": "#10b981",
+      "icon": "checkCircle"
+    },
+    "good": {
+      "score_range": { "min": 75, "max": 89 },
+      "description": "Water quality meets all standards",
+      "color": "#3b82f6",
+      "icon": "checkCircle"
+    },
+    "fair": {
+      "score_range": { "min": 60, "max": 74 },
+      "description": "Water quality acceptable with minor issues",
+      "color": "#f59e0b",
+      "icon": "alertTriangle"
+    },
+    "poor": {
+      "score_range": { "min": 40, "max": 59 },
+      "description": "Water quality below standards",
+      "color": "#ef4444",
+      "icon": "alertTriangle"
+    },
+    "critical": {
+      "score_range": { "min": 0, "max": 39 },
+      "description": "Water quality critically low",
+      "color": "#dc2626",
+      "icon": "xCircle"
+    }
+  },
+  "ml_training_data": {
+    "features": [
+      "ph",
+      "tds",
+      "orp",
+      "turbidity",
+      "temperature",
+      "flow_rate",
+      "pressure",
+      "time_of_day",
+      "day_of_week",
+      "usage_intensity"
+    ],
+    "labels": [
+      "filter_life_remaining",
+      "maintenance_required",
+      "quality_prediction",
+      "anomaly_probability",
+      "optimal_treatment_time"
+    ],
+    "sample_size": 10000,
+    "accuracy_target": 0.95
+  },
+  "system_parameters": {
+    "update_frequency": 5000,
+    "data_retention_days": 30,
+    "alert_thresholds": {
+      "consecutive_anomalies": 3,
+      "rapid_change_threshold": 0.2,
+      "stability_window": 300000
+    },
+    "performance_targets": {
+      "accuracy": 95,
+      "efficiency": 85,
+      "uptime": 99.5,
+      "response_time": 200
+    }
+  }
+} 

@@ -1,0 +1,34 @@
+# Environment variables
+.env
+.env.local
+.env.production
+.env.development
+
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+
+# Build outputs
+frontend/dist/
+backend/models/*.pkl
+*.db
+*.sqlite
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Firebase
+firebase-debug.log
+firestore-debug.log 

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AquaSentinel - Water Intelligence Platform</title>
+    <meta name="description" content="Advanced water quality monitoring and intelligent purification control system" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      /* Loading spinner for initial load */
+      .loading-spinner {
+        width: 32px;
+        height: 32px;
+        border: 3px solid #f3f4f6;
+        border-top: 3px solid #3b82f6;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      
+      .initial-loader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: linear-gradient(135deg, #dbeafe 0%, #ffffff 50%, #dbeafe 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        z-index: 9999;
+      }
+    </style>
+  </head>
+  <body class="font-inter bg-gray-50">
+    <!-- Initial loading screen -->
+    <div id="initial-loader" class="initial-loader">
+      <div style="text-align: center;">
+        <div style="width: 64px; height: 64px; background: linear-gradient(135deg, #3b82f6, #1d4ed8); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px;">
+          <span style="color: white; font-size: 24px; font-weight: bold;">AS</span>
+        </div>
+        <h1 style="font-size: 28px; font-weight: bold; color: #1f2937; margin: 0 0 8px;">AquaSentinel</h1>
+        <p style="color: #6b7280; margin: 0 0 32px;">Water Intelligence Platform</p>
+        <div class="loading-spinner"></div>
+      </div>
+    </div>
+
+    <!-- React app container -->
+    <div id="root"></div>
+    
+    <script type="module" src="/src/main.jsx"></script>
+    
+    <script>
+      // Hide loading screen once React loads
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          const loader = document.getElementById('initial-loader');
+          if (loader) {
+            loader.style.opacity = '0';
+            loader.style.transition = 'opacity 0.5s ease';
+            setTimeout(() => loader.remove(), 500);
+          }
+        }, 1000);
+      });
+    </script>
+  </body>
+</html> 
