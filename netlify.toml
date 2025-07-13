@@ -11,6 +11,9 @@
 [build.environment]
   NODE_VERSION = "18"
   NPM_VERSION = "9"
+  VITE_API_URL = "https://aquasentinel-backend.onrender.com"
+  VITE_APP_NAME = "AquaSentinel"
+  VITE_DEBUG = "false"
 
 # Headers for security and performance
 [[headers]]
