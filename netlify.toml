@@ -28,11 +28,4 @@
 [[headers]]
   for = "/static/*"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-# Enable form submissions for contact forms
-[[plugins]]
-  package = "@netlify/plugin-functions"
-
-[functions]
-  directory = "functions" 
+    Cache-Control = "public, max-age=31536000, immutable" 
